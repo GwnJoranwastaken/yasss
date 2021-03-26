@@ -1,1 +1,26 @@
+local Gui = game:GetService("StarterGui")
 
+
+function Start()
+Gui:SetCore("SendNotification", {
+    Title = "Welcome";
+    Text = "Gang Admin Loading Please wait";
+    Duration = 3;
+})
+wait(3)
+coregui:SetCore("SendNotification", {
+    Title = "Loaded";
+    Text = "Have Fun!";
+    Duration = 1;
+})
+end
+
+if game.PlaceId == 6155643742 then
+Gui:SetCore("SendNotification", {
+    Title = "Game Detected";
+    Text = "Fall Block";
+    Duration = 0.5;
+})
+Start()
+wait(3)
+end
