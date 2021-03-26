@@ -1,0 +1,107 @@
+local localplayer = game.Players.LocalPlayer
+local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
+
+function destroy(map)
+    for _,i in pairs(map:GetChildren()) do
+         game:GetService("ReplicatedStorage").Events.TouchRE:FireServer(i)
+    end
+end
+
+local UI = Material.Load({
+     Title = "Gang Admin",
+     Style = 3,
+     SizeX = 400,
+     SizeY = 300,
+     Theme = "Light"
+})
+
+local player = UI.New{
+    Title = "LocalPlayer",
+}
+
+local functions = UI.New{
+  Title = "Functions",
+}
+
+player.Slider{
+    Text = "Walkspeed",
+    Callback = function(value)
+        localplayer.Character.Humanoid.WalkSpeed = value
+    end,
+    Max = "250",
+    Def = localplayer.Character.Humanoid.WalkSpeed,
+    Min = "0"
+}
+player.Slider{
+    Text = "Jumppower",
+    Callback = function(value)
+        localplayer.Character.Humanoid.JumpPower = value
+    end,
+    Max = "500",
+    Def = localplayer.Character.Humanoid.JumpPower,
+    Min = "0"
+}
+player.Slider{
+    Text = "Gravity",
+    Callback = function(value)
+        game.Workspace.Gravity = value
+    end,
+    Max = "1000",
+    Def = game.Workspace.Gravity,
+    Min = "0"
+}
+
+functions.Dropdown{
+    Text = "Destroy Map",
+    Callback = function(value)
+    if value == "Map 1" then
+        destroy(game.Workspace.Maps.Map.Map1)
+    elseif value == "Map 2" then
+        destroy(game.Workspace.Maps.Map.Map2)
+    elseif value == "Map 3" then
+        destroy(game.Workspace.Maps.Map.Map3)
+    elseif value == "Map 4" then
+        destroy(game.Workspace.Maps.Map.Map4)
+    elseif value == "Map 5" then
+        destroy(game.Workspace.Maps.Map.Map5)
+    end
+    end,
+    Options = {"Map 1","Map 2","Map 3","Map 4","Map 5"}
+}
+functions.Button{
+    Text = "Destroy all maps",
+    Callback = function()
+        destroy(game.Workspace.Maps.Map.Map1)
+        wait(0.25)
+        destroy(game.Workspace.Maps.Map.Map2)
+        wait(0.25)
+        destroy(game.Workspace.Maps.Map.Map3)
+        wait(0.25)
+        destroy(game.Workspace.Maps.Map.Map4)
+        wait(0.25)
+        destroy(game.Workspace.Maps.Map.Map5)
+    end,
+}
+functions.Button{
+    Text = "Win",
+    Callback = function()
+        localplayer.Character.HumanoidRootPart.Anchored = true
+        destroy(game.Workspace.Maps.Map.Map1)
+        wait(0.25)
+        destroy(game.Workspace.Maps.Map.Map2)
+        wait(0.25)
+        destroy(game.Workspace.Maps.Map.Map3)
+        wait(0.25)
+        destroy(game.Workspace.Maps.Map.Map4)
+        wait(0.25)
+        destroy(game.Workspace.Maps.Map.Map5)
+        wait(1)
+        localplayer.Character.HumanoidRootPart.CFrame = CFrame.new(106.517006, 1630.5686, -205.924271, -0.999290586, -4.20121609e-08, 0.0376605876, -4.01232647e-08, 1, 5.0911634e-08, -0.0376605876, 4.93644485e-08, -0.999290586)
+        localplayer.Character.HumanoidRootPart.Anchored = true
+        wait(1)
+        localplayer.Character.HumanoidRootPart.CFrame = CFrame.new(106.517006, 1630.5686, -215.924271, -0.999290586, -4.20121609e-08, 0.0376605876, -4.01232647e-08, 1, 5.0911634e-08, -0.0376605876, 4.93644485e-08, -0.999290586)
+        wait(3)
+        localplayer.Character.HumanoidRootPart.CFrame = CFrame.new(106.517006, 1643.5686, -205.924271, -0.999290586, -4.20121609e-08, 0.0376605876, -4.01232647e-08, 1, 5.0911634e-08, -0.0376605876, 4.93644485e-08, -0.999290586)
+        localplayer.Character.HumanoidRootPart.Anchored = false
+    end,
+}
