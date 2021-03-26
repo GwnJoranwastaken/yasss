@@ -8,7 +8,7 @@ Gui:SetCore("SendNotification", {
     Duration = 3;
 })
 wait(3)
-coregui:SetCore("SendNotification", {
+Gui:SetCore("SendNotification", {
     Title = "Loaded";
     Text = "Have Fun!";
     Duration = 1;
